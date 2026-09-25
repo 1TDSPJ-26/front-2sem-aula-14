@@ -42,11 +42,10 @@ export default function Produtos() {
       const response = await fetch(`http://localhost:3001/produtos/${id}`, {
         method: "DELETE"
       });
-      alert("Produto excluído com sucesso!")
       if(!response.ok){
         throw new Error(`Falha na exclusão dos produtos. ${response.status} - ${response.statusText}`)
       }
-
+      alert("Produto excluído com sucesso!")
       navigate("/")
 
     } catch (error){
