@@ -14,6 +14,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home/> },
       { path: '/produtos', element: <Produtos/> },
+      { path: '/produtos/:id', element: <EditarProdutos/> },
       { path: '/editar-produtos/:id', element: <EditarProdutos/> },
       { path: '/users/git', element: <UsuariosGit/> }
     ]
@@ -25,6 +26,3 @@ createRoot(document.getElementById('root')!).render(
     <RouterProvider router={router} />
   </StrictMode>,
 )
-
-
-
