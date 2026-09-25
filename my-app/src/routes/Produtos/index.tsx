@@ -35,20 +35,24 @@ export default function Produtos() {
   carregaProdutos();
   }, []);
 
-  const handleDelete = async(id:string) => {
-    try {
-      const response = await fetch(`http://localhost:3001/produtos/${id}`, {
-        method: "DELETE",
-      /*
-      No caso do Post
-
+    /*
+    No caso do Post
+  const carregaProdutos = async () => {
+    try{
       const response = await fetch(`http://localhost:3001/produtos/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringfy({"nome": "criando", "preco": 0, "descricao": "x", "avatar": "url"})
-
+      if (!response.ok){
+        throw new Error (`Falha no cadastro do produto... ${response.status} - ${response.statusText}`)
+      }
+      alert("Produto cadastrado com sucesso")
+      
+    } catch (error) {
+      console.error(error) 
+    } 
       No caso do Put
 
       const response = await fetch(`http://localhost:3001/produtos/${id}`, {
@@ -56,8 +60,12 @@ export default function Produtos() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringfy({"id": id, "nome": "atualiando", "preco": 0, "descricao": "x", "avatar": "url"})
-      */
+      body: JSON.stringfy({"id": id, "nome": "atualziando", "preco": 0, "descricao": "x", "avatar": "url"})
+    */
+  const handleDelete = async(id:string) => {
+    try {
+      const response = await fetch(`http://localhost:3001/produtos/${id}`, {
+        method: "DELETE",
       });
       if (!response.ok){
         throw new Error (`Falha na deleção do produto... ${response.status} - ${response.statusText}`)
