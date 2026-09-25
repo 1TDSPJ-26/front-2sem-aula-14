@@ -1,32 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router";
-import type { TipoProduto } from "../../types/types";
-import { listaProdutos } from "../../data/listaProdutos";
 
 export default function EditarProdutos() {
 
-  const { id } = useParams<string>();
-
-  // const[produto, setProduto] = useState<{id:number, nome:string, preco:number}>();
-  const [produto, setProduto] = useState<TipoProduto>({} as TipoProduto);
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    const prodEncontrado = listaProdutos.find((p) => p.id === Number(id));
-    setProduto(prodEncontrado!);
+
+    const carregaProduto = async () => {
+      try {
+
+        const response = await fetch(`http://localhost:3001/produtos/${id}`);
+
+        if (!response.ok) {
+          throw new Error(`Falha na requisição dos produtos... ${response.status} - ${response.statusText}`);
+        }
+
+        const data: TipoProduto[] = await response.json();
+        console.log(data);
+        setProdutos(data); //Atualizando a lista de produtos
+        //setProdutos(data); //Atualizando a lista de produtos
+
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    carregaProdutos();
 
   }, [])
 
   return (
     <main>
       <h2>Editar Produtos</h2>
-
-      {produto ? (
-        <div>
-          <p>Nome  do produto: {produto.nome}</p>
-          <p>Preço do produto: {produto.preco}</p>
-        </div>) :
-        (<p>Produto não encontrado</p>)
-      }
 
     </main>
   )

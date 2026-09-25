@@ -1,86 +1,40 @@
 import { useState } from "react";
-import imgQuadrado from "../../img/quadrado.png";
 
 export default function Conteudo() {
-  // --- NOME COMUM ---
-  let nomeComum: string | null = "Tay";
 
-  function alterarNomeComum() {
-    nomeComum = prompt("Digite o novo nome!");
-    console.log("Nome alterado: ", nomeComum);
+  let nomeComum: string | null = "flavio";
+  function alterNomeComum() {
+    nomeComum = prompt("digite o novo nome!");
+    console.log("nome alterado : ", nomeComum)
   }
 
-  // --- NOME STATE ---
-  const [nomeState, setNomeState] = useState<string | null>("Schneider");
-
-  function alteraNomeState() {
-    const nome = prompt("Digite o novo nome!");
+  const [nomeState, setNomeState] = useState<string | null>("juquinha");
+  function alterNomeState() {
+    const nome: string | null = prompt("digite o novo nome")
     setNomeState(nome);
-    console.log("Nome alterado : ", nomeState); // Lembre-se: o console.log aqui pode mostrar o valor antigo por causa do assincronismo do React!
+    console.log("Nome alterado : ", nomeState);
   }
 
-  // --- LAMPADA STATE ---
-  const [lampadaState, setLampadaState] = useState<string | null>("Lâmpada apagada");
-
-  function ligarLampadaState() {
-    setLampadaState("Lâmpada acesa");
-  }
-
-  // --- LAMPADA COMUM ---
-  let lampadaComum: string | null = "Lâmpada apagada";
-
-  function ligarLampadaComum() {
-    lampadaComum = "Lâmpada acesa";
-    console.log(lampadaComum);
-  }
 
   return (
     <main>
-      <div>
-        <h1>Lâmpada</h1>
-        <p>Lâmpada Comum</p>
-        <button onClick={ligarLampadaComum}>Ligar Lâmpada = {lampadaComum}</button>
+      <h2>Conteudo Principal</h2>
 
-        <p>Lâmpada state</p>
-        <button onClick={ligarLampadaState}>Ligar Lâmpada = {lampadaState}</button>
-      </div>
+      <figure>
+        <img src="https://placehold.co/600x400/FFFFF0/FFFFFF/png" alt="Imagem ilustrativa do conteúdo" />
+
+        <figcaption>Imagem utilizada para representar o conteúdo da aplicação.</figcaption>
+      </figure>
 
       <div>
         <p>Nome Comum : {nomeComum}</p>
-        <button onClick={alterarNomeComum}>Alterar nome = {nomeComum}</button>
+        <button onClick={alterNomeComum}>Nome Alterado = {nomeComum}</button>
       </div>
 
       <div>
         <p>Nome State : {nomeState}</p>
-        <button onClick={alteraNomeState}>Alterar nome state = {nomeState}</button>
+        <button onClick={alterNomeState}>Nome alterado State = {nomeState}</button>
       </div>
-
-      <section>
-        <h2>Conteúdo</h2>
-        <figure>
-          <img src="https://placehold.co/300x200/000000/FFFFFF/png" alt="Imagem ilustrativa do conteúdo" />
-          <figcaption>Imagem utilizada para representar o conteúdo da aplicação.</figcaption>
-        </figure>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur minima, numquam qui sequi ut alias, ad optio corrupti cum, pariatur vero quod consectetur saepe veritatis explicabo obcaecati iure eveniet est?</p>
-      </section>
-
-      <section>
-        <h2>Imagem Interna</h2>
-        <figure>
-          <img src={imgQuadrado} alt="Imagem ilustrativa do conteúdo" />
-          <figcaption>Imagem utilizada para representar o conteúdo da aplicação.</figcaption>
-        </figure>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur minima, numquam qui sequi ut alias, ad optio corrupti cum, pariatur vero quod consectetur saepe veritatis explicabo obcaecati iure eveniet est?</p>
-      </section>
-
-      <section>
-        <h2>Imagem Estática</h2>
-        <figure>
-          <img src="/quadrado-b.png" alt="Imagem ilustrativa do conteúdo" />
-          <figcaption>Imagem utilizada para representar o conteúdo da aplicação.</figcaption>
-        </figure>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur minima, numquam qui sequi ut alias, ad optio corrupti cum, pariatur vero quod consectetur saepe veritatis explicabo obcaecati iure eveniet est?</p>
-      </section>
     </main>
-  );
+  )
 }

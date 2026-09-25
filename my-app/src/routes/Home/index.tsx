@@ -17,7 +17,8 @@ export default function Home() {
   console.log(jogos[1]);
   console.log(jogos[0]);
 
-  const [, mario, zelda] = jogos;
+  const [mario, zelda] = jogos;
+
 
 
   return (
